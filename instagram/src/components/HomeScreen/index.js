@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
+import PostsContainer from './Posts';
 
 const HomeScreenContainer = () => {
-  return <div>HomeScreen</div>;
+  return (
+    <div>
+      <PostsContainer />
+    </div>
+  );
 };
 
 export default HomeScreenContainer;

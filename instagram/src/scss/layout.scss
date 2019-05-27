@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+} /* Allows usage of border-box across app, easier to style. */
+
+body {
+  background-color: #f9f9fa;
+}
+
+.App {
+  //   max-width: 1440px;
+  background-color: white;
+  margin: 0 auto;
+}

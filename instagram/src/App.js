@@ -1,30 +1,38 @@
-import React from "react";
-import "./App.css";
-import HomeScreen from "./components/HomeScreen";
+import React from 'react';
+import Header from './components/Header';
+import HomeScreen from './components/HomeScreen';
+
+import { StateProvider } from './state';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Header />
-      </header>
-      <main>
-        <HomeScreen />
-      </main>
-    </div>
-  );
-}
-
-function Header() {
-  const style = {
-    width: "100vw",
-    height: "6.8vh",
-    background: "white"
+  const initialState = {
+    count: 0
   };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'INCREMENT':
+        return {
+          ...state,
+          count: state.count + 1
+        };
+
+      default:
+        return state;
+    }
+  };
+
   return (
-    <div style={style}>
-      <h1>Instagram</h1>
-    </div>
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <div className='App'>
+        <header className='App-header'>
+          <Header />
+        </header>
+        <main>
+          <HomeScreen />
+        </main>
+      </div>
+    </StateProvider>
   );
 }
 
