@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useStateValue } from '../../../state';
 
 const ViewComments = ({ post }) => {
-  const [{ selectedPost }, dispatch] = useStateValue();
+  const [{ posts }, dispatch] = useStateValue();
 
+  console.log('POSTS: ', posts);
+
+  console.log('Passed down post: ', post);
   const [commentText, setCommentText] = useState('');
+  const [selectedPost] = posts.filter(post => {
+    // return post.id == localStorage.getItem('selectedPost');
+    return post.id == 1;
+  });
+  console.log('ADSSDSDSD: ', selectedPost);
 
   return (
     <div>
@@ -30,7 +38,7 @@ const ViewComments = ({ post }) => {
             e.preventDefault();
             dispatch({
               type: 'ADD_COMMENT',
-              postId: post.id,
+              postId: parseInt(localStorage.getItem('selectedPost')),
               commentText
             });
           }}

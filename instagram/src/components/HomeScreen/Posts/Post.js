@@ -10,13 +10,13 @@ import ViewComments from './ViewComments';
 
 import { useStateValue } from '../../../state';
 
-const Post = ({ post }) => {
+const Post = ({ history, post }) => {
   //   const [{ count }, dispatch] = useStateValue();
 
   const [{ selectedPost }, dispatch] = useStateValue();
 
-  if (selectedPost !== null) {
-    return <ViewComments post={selectedPost} />;
+  if (history.location.pathname === '/viewall') {
+    return <ViewComments post={post} />;
   }
 
   return (
@@ -58,4 +58,4 @@ const Post = ({ post }) => {
   };
 };
 
-export default Post;
+export default withRouter(Post);

@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { useStateValue } from '../../../state';
 
-const Comments = ({ comments, post }) => {
+const Comments = ({ history, comments, post }) => {
   const [{ selectedPost }, dispatch] = useStateValue();
 
   return (
@@ -12,11 +12,12 @@ const Comments = ({ comments, post }) => {
         {comments.length > 1 ? (
           <span>
             <button
-              onClick={() => {
-                dispatch({
-                  type: 'SELECT_POST',
-                  post
-                });
+              onClick={e => {
+                e.preventDefault();
+                localStorage.setItem('selectedPost', post.id);
+                setTimeout(() => {
+                  history.push('/viewall');
+                }, 500);
               }}
             >
               View all {comments.length} comments
