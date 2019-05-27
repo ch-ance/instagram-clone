@@ -32,7 +32,8 @@ function App() {
           }
         ]
       }
-    ]
+    ],
+    selectedPost: null
   };
 
   const reducer = (state, action) => {
@@ -44,12 +45,20 @@ function App() {
           count: state.count + 1
         };
 
+      case 'SELECT_POST':
+        return {
+          ...state,
+          selectedPost: action.post
+        };
+
       case 'ADD_COMMENT':
         let index = 0;
-        const selectedPost = state.posts.filter((eachPost, i) => {
+        const [selectedPost] = state.posts.filter((eachPost, i) => {
           index = i;
           return eachPost.id === action.postId;
         });
+
+        console.log('SELECTED POST:  ', selectedPost);
 
         const updatedPost = selectedPost.comments.push({
           user: state.user.username,

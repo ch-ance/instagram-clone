@@ -1,7 +1,11 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-const Comments = ({ comments, setSelectedPost, post }) => {
+import { useStateValue } from '../../../state';
+
+const Comments = ({ comments, post }) => {
+  const [{ selectedPost }, dispatch] = useStateValue();
+
   return (
     <div>
       <span>
@@ -9,7 +13,10 @@ const Comments = ({ comments, setSelectedPost, post }) => {
           <span>
             <button
               onClick={() => {
-                setSelectedPost(post);
+                dispatch({
+                  type: 'SELECT_POST',
+                  post
+                });
               }}
             >
               View all {comments.length} comments

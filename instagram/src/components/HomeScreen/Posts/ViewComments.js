@@ -3,23 +3,19 @@ import React, { useState } from 'react';
 import { useStateValue } from '../../../state';
 
 const ViewComments = ({ post }) => {
-  const [{ posts }, dispatch] = useStateValue();
-
-  const [thisPost] = posts.filter(eachPost => {
-    return eachPost.id === post.id;
-  });
+  const [{ selectedPost }, dispatch] = useStateValue();
 
   const [commentText, setCommentText] = useState('');
 
   return (
     <div>
       <ul>
-        {thisPost.description && (
+        {selectedPost.description && (
           <li>
-            <strong>{thisPost.user}</strong> {thisPost.description}
+            <strong>{selectedPost.user}</strong> {selectedPost.description}
           </li>
         )}
-        {thisPost.comments.map(comment => {
+        {selectedPost.comments.map(comment => {
           return (
             <li>
               <strong>{comment.user}</strong>
@@ -29,7 +25,16 @@ const ViewComments = ({ post }) => {
         })}
       </ul>
       <div className='addComment'>
-        <form>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            dispatch({
+              type: 'ADD_COMMENT',
+              postId: post.id,
+              commentText
+            });
+          }}
+        >
           <input
             type='text'
             placeholder='add a comment'
