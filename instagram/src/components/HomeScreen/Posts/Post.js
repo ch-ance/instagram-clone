@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import PostHeader from './PostHeader';
 import PostImage from './PostImage';
 import PostFooter from './PostFooter';
 import Comments from './Comments';
 
-import { useStateValue } from '../../../state';
+import ViewComments from './ViewComments';
 
 const Post = ({ post }) => {
   //   const [{ count }, dispatch] = useStateValue();
+
+  const [selectedPost, setSelectedPost] = useState(null);
+
+  if (selectedPost !== null) {
+    return <ViewComments post={selectedPost} />;
+  }
 
   return (
     <div>
       <PostHeader user={post.user} />
       <PostImage image={post.imageUrl} />
       <PostFooter likes={post.likes} />
-      <Comments comments={post.comments} />
+      <Comments
+        comments={post.comments}
+        setSelectedPost={setSelectedPost}
+        post={post}
+      />
     </div>
   );
   {

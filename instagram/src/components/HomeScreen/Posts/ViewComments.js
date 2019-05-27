@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ViewComments = ({ comments, description, author }) => {
+import { useStateValue } from '../../../state';
+
+const ViewComments = ({ post }) => {
+  const [{ posts }, dispatch] = useStateValue();
+
+  const [thisPost] = posts.filter(eachPost => {
+    return eachPost.id === post.id;
+  });
+
+  const [commentText, setCommentText] = useState('');
+
   return (
     <div>
       <ul>
-        {description && (
+        {thisPost.description && (
           <li>
-            <strong>{author}</strong> {description}
+            <strong>{thisPost.user}</strong> {thisPost.description}
           </li>
         )}
-        {comments.map(comment => {
+        {thisPost.comments.map(comment => {
           return (
             <li>
               <strong>{comment.user}</strong>
@@ -18,8 +28,15 @@ const ViewComments = ({ comments, description, author }) => {
           );
         })}
       </ul>
-      <div className={addComment}>
-        <input type='text' placeholder='add a comment' />
+      <div className='addComment'>
+        <form>
+          <input
+            type='text'
+            placeholder='add a comment'
+            value={commentText}
+            onChange={e => setCommentText(e.target.value)}
+          />
+        </form>
       </div>
     </div>
   );

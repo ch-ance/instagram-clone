@@ -13,6 +13,7 @@ function App() {
     },
     posts: [
       {
+        id: 1,
         user: 'neymarjr',
         profilePic:
           'https://scontent-ort2-1.cdninstagram.com/vp/e9fc79caa7478268b7994c583382eab5/5D917FE2/t51.2885-19/s320x320/57291239_2820251434866018_5427607432459190272_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com',
@@ -41,6 +42,27 @@ function App() {
         return {
           ...state,
           count: state.count + 1
+        };
+
+      case 'ADD_COMMENT':
+        let index = 0;
+        const selectedPost = state.posts.filter((eachPost, i) => {
+          index = i;
+          return eachPost.id === action.postId;
+        });
+
+        const updatedPost = selectedPost.comments.push({
+          user: state.user.username,
+          comment: action.commentText
+        });
+
+        const posts = state.posts;
+
+        posts[index] = updatedPost;
+
+        return {
+          ...state,
+          posts
         };
 
       default:

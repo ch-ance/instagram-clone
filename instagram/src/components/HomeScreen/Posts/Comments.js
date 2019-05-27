@@ -1,12 +1,20 @@
 import React from 'react';
-import { comment } from 'postcss';
+import { withRouter, Link } from 'react-router-dom';
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, setSelectedPost, post }) => {
   return (
     <div>
       <span>
         {comments.length > 1 ? (
-          <span>View all {comments.length} comments</span>
+          <span>
+            <button
+              onClick={() => {
+                setSelectedPost(post);
+              }}
+            >
+              View all {comments.length} comments
+            </button>
+          </span>
         ) : (
           <span>View 1 comment</span>
         )}
@@ -18,4 +26,4 @@ const Comments = ({ comments }) => {
   );
 };
 
-export default Comments;
+export default withRouter(Comments);
