@@ -6,9 +6,24 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Instagram</h1>
-        <HomeScreen />
+        <Header />
       </header>
+      <main>
+        <HomeScreen />
+      </main>
+    </div>
+  );
+}
+
+function Header() {
+  const style = {
+    width: "100vw",
+    height: "6.8vh",
+    background: "white"
+  };
+  return (
+    <div style={style}>
+      <h1>Instagram</h1>
     </div>
   );
 }
