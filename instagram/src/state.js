@@ -43,24 +43,37 @@ const reducer = (state, action) => {
       };
 
     case 'ADD_COMMENT':
-      let index = 0;
-      const [selectedPost] = state.posts.filter((eachPost, i) => {
-        index = i;
-        return eachPost.id === action.postId;
+      // let index = 0;
+      // const [selectedPost] = state.posts.filter((eachPost, i) => {
+      //   index = i;
+      //   return eachPost.id === action.postId;
+      // });
+
+      // const updatedPost = selectedPost.comments.push({
+      //   user: state.user.username,
+      //   comment: action.commentText
+      // });
+
+      const posts = state.posts.map(post => {
+        if (post.id == action.id) {
+          return {
+            comments: [
+              ...post.comments,
+              {
+                user: state.user.username,
+                comment: action.commentText
+              }
+            ],
+            ...post
+          };
+        } else {
+          return post;
+        }
       });
-
-      const updatedPost = selectedPost.comments.push({
-        user: state.user.username,
-        comment: action.commentText
-      });
-
-      const posts = state.posts;
-
-      posts[index] = updatedPost;
 
       return {
-        ...state,
-        posts
+        posts,
+        ...state
       };
 
     default:
