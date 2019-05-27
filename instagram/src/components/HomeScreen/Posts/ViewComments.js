@@ -5,15 +5,12 @@ import { useStateValue } from '../../../state';
 const ViewComments = ({ post }) => {
   const [{ posts }, dispatch] = useStateValue();
 
-  console.log('POSTS: ', posts);
-
-  console.log('Passed down post: ', post);
   const [commentText, setCommentText] = useState('');
   const [selectedPost] = posts.filter(post => {
     // return post.id == localStorage.getItem('selectedPost');
     return post.id == 1;
   });
-  console.log('ADSSDSDSD: ', selectedPost);
+  console.log('comments: ', selectedPost.comments);
 
   return (
     <div>
@@ -38,9 +35,10 @@ const ViewComments = ({ post }) => {
             e.preventDefault();
             dispatch({
               type: 'ADD_COMMENT',
-              postId: parseInt(localStorage.getItem('selectedPost')),
+              postId: selectedPost.id,
               commentText
             });
+            setCommentText('');
           }}
         >
           <input
@@ -49,6 +47,7 @@ const ViewComments = ({ post }) => {
             value={commentText}
             onChange={e => setCommentText(e.target.value)}
           />
+          <button type='submit'>Send</button>
         </form>
       </div>
     </div>
