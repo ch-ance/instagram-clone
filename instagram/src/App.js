@@ -6,9 +6,16 @@ import { StateProvider } from './state';
 
 function App() {
   const initialState = {
+    user: {
+      username: 'therock',
+      profilePic:
+        'https://scontent-ort2-1.cdninstagram.com/vp/b8591b1301d381a7e8baddb2fca31af0/5D9D0AFC/t51.2885-19/11850309_1674349799447611_206178162_a.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com'
+    },
     posts: [
       {
         user: 'neymarjr',
+        profilePic:
+          'https://scontent-ort2-1.cdninstagram.com/vp/e9fc79caa7478268b7994c583382eab5/5D917FE2/t51.2885-19/s320x320/57291239_2820251434866018_5427607432459190272_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com',
         likes: 1108061,
         description: '"Spirit of the Brave"',
         imageUrl:
