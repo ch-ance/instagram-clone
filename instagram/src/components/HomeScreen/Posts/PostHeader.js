@@ -2,9 +2,10 @@ import React from 'react';
 
 const PostHeader = ({ user }) => {
   return (
-    <>
-      <h3>{user}</h3>
-    </>
+    <div className='postHeader'>
+      <img src={user.profilePic} />
+      <h3>{user.username}</h3>
+    </div>
   );
 };
 

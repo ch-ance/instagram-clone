@@ -11,13 +11,15 @@ const initialState = {
   posts: [
     {
       id: 1,
-      user: 'neymarjr',
-      profilePic:
-        'https://scontent-ort2-1.cdninstagram.com/vp/e9fc79caa7478268b7994c583382eab5/5D917FE2/t51.2885-19/s320x320/57291239_2820251434866018_5427607432459190272_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com',
+      user: {
+        username: 'neymarjr',
+        profilePic:
+          'https://scontent-ort2-1.cdninstagram.com/vp/e9fc79caa7478268b7994c583382eab5/5D917FE2/t51.2885-19/s320x320/57291239_2820251434866018_5427607432459190272_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com'
+      },
       likes: 1108061,
       description: '"Spirit of the Brave"',
       imageUrl:
-        'https://scontent-ort2-1.cdninstagram.com/vp/4cc5de878ed6c769d205f93adf84e19e/5D966EA1/t51.2885-15/e35/p320x320/59695637_401291657151771_1836917351015504372_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com',
+        'https://pro2-bar-s3-cdn-cf6.myportfolio.com/d3cfbae11d81ad80a723428969ff89b9/a60392d0-c236-47df-a56e-046764c0d291_car_1x1.jpg?h=c87bac36393460a71fc247ebf7c80d07',
       comments: [
         {
           user: 'talitadonega',
