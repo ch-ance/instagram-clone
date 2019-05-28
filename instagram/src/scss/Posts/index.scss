@@ -49,10 +49,20 @@
 }
 
 .comments {
+  .description-author {
+    font-weight: bold;
+    margin: 2% 2% 2% 2%;
+  }
   .view-more-comments {
     border: none;
     background: none;
     color: grey;
     margin: 3% 0;
+  }
+  strong {
+    margin: 0 3% 0 2%;
+  }
+  .comment-text {
+    word-wrap: break-word;
   }
 }

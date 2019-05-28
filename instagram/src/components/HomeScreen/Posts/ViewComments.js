@@ -17,7 +17,8 @@ const ViewComments = ({ post }) => {
       <ul>
         {selectedPost.description && (
           <li>
-            <strong>{selectedPost.user}</strong> {selectedPost.description}
+            <strong>{selectedPost.user.username}</strong>{' '}
+            {selectedPost.description}
           </li>
         )}
         {selectedPost.comments.map(comment => {

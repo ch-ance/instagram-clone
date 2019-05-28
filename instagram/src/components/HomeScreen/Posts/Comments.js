@@ -8,6 +8,9 @@ const Comments = ({ history, comments, post }) => {
 
   return (
     <div className='comments'>
+      <span className='description-author'>{post.user.username}</span>
+      <span className='description-text'>{post.description}</span>
+      <br />
       <span>
         {comments.length > 1 ? (
           <span>
@@ -30,7 +33,7 @@ const Comments = ({ history, comments, post }) => {
       </span>
       <br />
       <strong>{comments[0].user}</strong>
-      {comments[0].comment}
+      <span className='comment-text'>{comments[0].comment}</span>
     </div>
   );
 };
