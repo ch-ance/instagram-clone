@@ -1,12 +1,9 @@
 import React from 'react';
 
 const PostImage = ({ image }) => {
-  const style = {
-    width: '100vw'
-  };
   return (
-    <div style={style}>
-      <img className='postImage' style={style} src={image} />
+    <div className='post-image-container'>
+      <img className='postImage' src={image} />
     </div>
   );
 };

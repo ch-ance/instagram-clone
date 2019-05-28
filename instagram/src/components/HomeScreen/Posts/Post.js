@@ -23,8 +23,10 @@ const Post = ({ history, post }) => {
     <div>
       <PostHeader user={post.user} />
       <PostImage image={post.imageUrl} />
-      <PostFooter likes={post.likes} />
-      <Comments comments={post.comments} post={post} />
+      <div className='below-image'>
+        <PostFooter likes={post.likes} />
+        <Comments comments={post.comments} post={post} />
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const PostsContainer = () => {
   const [{ posts }, dispatch] = useStateValue();
 
   return (
-    <div>
+    <div className='post-container'>
       {posts.map(post => {
         return <Post post={post} />;
       })}
